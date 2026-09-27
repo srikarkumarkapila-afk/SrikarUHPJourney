@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srikar Kumar Kapila - UHP Learning Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        ucRed: '#C6011F',
+                        ucDarkRed: '#9b0117',
+                        ucBlack: '#000000',
+                        darkBg: '#0A0A0C',
+                        cardBg: '#141418',
+                        cardBorder: '#262630'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #000;
+            overflow-x: hidden;
+        }
+
+        .bg-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        #bg-campus {
+            background-image: url('WhatsApp Image 2026-09-27 at 9.57.37 AM.jpeg');
+            opacity: 1;
+            transition: opacity 0.5s ease-out;
+        }
+
+        #bg-hangar {
+            background-image: url('Plane.jpeg');
+            opacity: 0;
+            transition: opacity 0.5s ease-out;
+            filter: brightness(1.35) contrast(1.1);
+        }
+
+        #scroll-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            opacity: 0.85;
+            transition: opacity 0.1s ease-out;
+            pointer-events: none;
+            z-index: 1;
+        }
+    </style>
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollFraction = Math.min(1, Math.max(0, scrollTop / (docHeight || 1)));
+
+            const bgCampus = document.getElementById('bg-campus');
+            const bgHangar = document.getElementById('bg-hangar');
+            const overlay = document.getElementById('scroll-overlay');
+
+            if (scrollFraction <= 0.5) {
+                const progress = scrollFraction * 2;
+                bgCampus.style.opacity = (1 - progress).toFixed(3);
+                bgHangar.style.opacity = '0';
+            } else {
+                const progress = (scrollFraction - 0.5) * 2;
+                bgCampus.style.opacity = '0';
+                bgHangar.style.opacity = progress.toFixed(3);
+            }
+
+            const dynamicOpacity = 0.85 + (scrollFraction * 0.10);
+            overlay.style.opacity = dynamicOpacity.toFixed(3);
+        });
+    </script>
+</head>
+<body class="text-gray-100 font-sans antialiased min-h-screen flex flex-col selection:bg-ucRed selection:text-white relative">
+
+    <div id="bg-campus" class="bg-layer"></div>
+    <div id="bg-hangar" class="bg-layer"></div>
+    <div id="scroll-overlay"></div>
+
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-darkBg/90 backdrop-blur-md border-b border-cardBorder">
+        <div class="max-w-[96%] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="flex items-center group" title="Return to About Me">
+                    <div class="w-12 h-12 rounded-xl overflow-hidden bg-cardBorder border border-ucRed/40 flex items-center justify-center shadow-lg shadow-ucRed/20 group-hover:border-ucRed transition-all">
+                        <img src="SK.jpg" alt="SK Logo" class="w-full h-full object-cover">
+                    </div>
+                </a>
+                <div>
+                    <span class="block font-bold text-lg tracking-tight text-white">Srikar Kumar Kapila</span>
+                    <span class="block text-xs text-ucRed font-medium tracking-wider uppercase">University of Cincinnati | University Honors Program</span>
+                </div>
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                <a href="index.html" class="px-4 py-2 rounded-xl text-sm font-medium bg-ucRed text-white transition-all shadow-sm">About Me</a>
+                <a href="involvement.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Involvement & Interests</a>
+                <a href="yearinreview.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Year-In-Review</a>
+                <a href="honors.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Honors Experiences</a>
+            </nav>
+
+            <div class="md:hidden">
+                <button type="button" class="text-gray-400 hover:text-white p-2">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow w-[96%] max-w-[1700px] mx-auto px-4 sm:px-8 lg:px-12 py-12 space-y-16 relative z-10">
+
+        <!-- Hero / Title Section -->
+        <section class="text-center space-y-4 py-8 border-b border-cardBorder">
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white">
+                My Journey as an Aerospace Engineer
+            </h1>
+            <p class="max-w-4xl mx-auto text-gray-300 text-lg sm:text-xl">
+                Welcome to my digital learning portfolio documenting my academic growth, reflections, and experiences at the University of Cincinnati.
+            </p>
+        </section>
+
+        <!-- Top Section: Photo & Profile Card Side-by-Side -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            <div class="lg:col-span-4 bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl p-6 shadow-xl flex flex-col items-center">
+                <div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border-2 border-ucRed/40 group">
+                    <img src="Srikar Professional Image.jpeg" alt="Srikar Kumar Kapila" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-xs text-gray-200 font-medium">Srikar Kumar Kapila • Aerospace Engineering</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-8 bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl p-8 sm:p-10 shadow-xl space-y-6">
+                <div class="border-b border-cardBorder pb-4">
+                    <h2 class="text-3xl font-bold text-white flex items-center space-x-3">
+                        <span>Srikar Kumar Kapila</span>
+                        <span class="text-xs px-3 py-1 rounded-xl bg-ucRed/20 text-ucRed font-semibold border border-ucRed/30">UHP Scholar</span>
+                    </h2>
+                    <p class="text-gray-400 text-base mt-1">College of Engineering and Applied Science (CEAS)</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-base">
+                    <div class="bg-darkBg/60 p-5 rounded-xl border border-cardBorder">
+                        <span class="block text-gray-400 text-xs font-semibold uppercase tracking-wider">Major</span>
+                        <span class="text-white font-medium mt-1 block text-lg">Aerospace Engineering</span>
+                    </div>
+                    <div class="bg-darkBg/60 p-5 rounded-xl border border-cardBorder">
+                        <span class="block text-gray-400 text-xs font-semibold uppercase tracking-wider">Class of Graduation</span>
+                        <span class="text-white font-medium mt-1 block text-lg">2031</span>
+                    </div>
+                    <div class="bg-darkBg/60 p-5 rounded-xl border border-cardBorder">
+                        <span class="block text-gray-400 text-xs font-semibold uppercase tracking-wider">UC Email</span>
+                        <a href="mailto:kapilasr@mail.uc.edu" class="text-ucRed hover:underline font-medium mt-1 block truncate text-lg">kapilasr@mail.uc.edu</a>
+                    </div>
+                    <div class="bg-darkBg/60 p-5 rounded-xl border border-cardBorder">
+                        <span class="block text-gray-400 text-xs font-semibold uppercase tracking-wider">Cumulative GPA</span>
+                        <span class="text-white font-medium mt-1 block text-lg">TBD</span>
+                    </div>
+                </div>
+
+                <div class="pt-2">
+                    <a href="https://www.linkedin.com/in/s-k-k/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full py-4 px-6 rounded-xl bg-[#0a66c2] hover:bg-[#095196] text-white font-semibold transition-all shadow-lg space-x-2 text-lg">
+                        <i class="fa-brands fa-linkedin text-xl"></i>
+                        <span>Connect on LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Background & Unique Story Section -->
+        <section class="bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl p-8 sm:p-12 shadow-xl space-y-6">
+            <div class="flex items-center justify-between border-b border-cardBorder pb-4 flex-wrap gap-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-ucRed/20 text-ucRed flex items-center justify-center font-bold text-lg">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white">How challenges build me?</h3>
+                </div>
+                <a href="yearinreview.html" class="inline-flex items-center space-x-2 text-sm font-semibold text-white bg-ucRed hover:bg-ucDarkRed px-5 py-2.5 rounded-xl transition-all shadow-md shadow-ucRed/20">
+                    <span>View Year-In-Review</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="space-y-6 text-gray-300 leading-relaxed text-lg sm:text-xl">
+                <p>
+                    I am an academically motivated, ambitious rising Aerospace Engineer at the University of Cincinnati. I love competition and challenges. I have faced many challenges throughout my life, including moving to 3 different cities in the past 7 years, long commutes, and losing recognition for my academic merit. However, these challenges fueled my drive to succeed; I earned a Summa Cum Laude high school diploma, placing in the top 5% of the graduating class of 2026 at William Mason High School, with 70 college credits.
+                </p>
+                <p>
+                    In India, I was identified as academically gifted and was allowed to move up a grade. In 2019, my family had to move to Canada due to my dad's work. But due to their age restrictions, I had to stay back in 5th grade for 2 months despite finishing 6th grade in India. Although initially demotivated, the additional time gave me a chance to develop new technical skills & hobbies: I got involved with programming, robotics, and chess (recently tied for first in the U1600 section in the 2026 US Chess Federation's K12 High School Nationals in Chicago). Similar to chess, I have won awards from my robotics program and coding classes. But just as I started 8th grade, we had to move to the US for another work transfer for my dad.
+                </p>
+                <p>
+                    In the US, middle school went well. Later in 2022, I was selected for a magnet high school, which allowed me the opportunity to take college courses throughout my high school years. However, every day, I had to take a school bus journey that lasted 2 hours in the morning and evening. Spending 4 hours commuting exhausted me, but taught me excellent time management skills. I ranked no.1 & no.4 in my school in my freshman and sophomore years, respectively.
+                </p>
+                <p>
+                    My final move was to Mason, Ohio (in 2024) due to another transfer. Entering Junior year with a 4.7 weighted GPA, I was astonished when my new school did not issue me credit for all 11 honors courses, dropping my GPA to a 4.3. Classes felt significantly more difficult as I fought the demotivation, but I made it a goal to get my GPA back. I took more college courses, worked extremely hard, and brought my GPA to a 4.5.
+                </p>
+                <p>
+                    I was awarded the Ohio Governor's Merit Scholarship, which guaranteed me a spot in all public institutions in Ohio along with a yearly grant of $5000. However, as I converted to an F1 student to participate in the COOP program, I was notified 2 days before my tuition was due that I would no longer be eligible for the Governor's Merit Scholarship. I am very thankful to my family for taking care of me and being very supportive. This lack of scholarship has fueled me to significantly expand my horizons and work harder.
+                </p>
+            </div>
+        </section>
+
+        <!-- Secondary Section: Interests & Passions -->
+        <section id="involvement" class="bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl p-8 sm:p-12 shadow-xl space-y-8">
+            <div class="flex items-center justify-between border-b border-cardBorder pb-4 flex-wrap gap-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-ucRed/20 text-ucRed flex items-center justify-center font-bold text-lg">
+                        <i class="fa-solid fa-compass"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white">Interests & Passions at UHP</h3>
+                </div>
+                <a href="involvement.html" class="inline-flex items-center space-x-2 text-sm font-semibold text-white bg-ucRed hover:bg-ucDarkRed px-5 py-2.5 rounded-xl transition-all shadow-md shadow-ucRed/20">
+                    <span>View Full Involvement Page</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-ucRed/20 text-ucRed flex items-center justify-center font-bold text-xl">
+                        <i class="fa-solid fa-atom"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-white">Aerospace Research</h4>
+                    <p class="text-gray-300 text-base leading-relaxed">
+                        Get into Aerospace Research through the RAMP (Research and Mentorship Program) at UC.
+                    </p>
+                </div>
+
+                <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-ucRed/20 text-ucRed flex items-center justify-center font-bold text-xl">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-white">Peer Connections</h4>
+                    <p class="text-gray-300 text-base leading-relaxed">
+                        Connect with many academically motivated students within the University Honors Program and CEAS.
+                    </p>
+                </div>
+
+                <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-ucRed/20 text-ucRed flex items-center justify-center font-bold text-xl">
+                        <i class="fa-solid fa-hands-holding-child"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-white">Volunteer & Internships</h4>
+                    <p class="text-gray-300 text-base leading-relaxed">
+                        Participate in UHP exclusive volunteer opportunities and professional internships to build real-world impact.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secondary Section: Academic & Personal Goals -->
+        <section class="bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl p-8 sm:p-12 shadow-xl space-y-8">
+            <div class="flex items-center justify-between border-b border-cardBorder pb-4 flex-wrap gap-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-ucRed/20 text-ucRed flex items-center justify-center font-bold text-lg">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white">Academic & Personal Goals</h3>
+                </div>
+                <a href="honors.html" class="inline-flex items-center space-x-2 text-sm font-semibold text-white bg-ucRed hover:bg-ucDarkRed px-5 py-2.5 rounded-xl transition-all shadow-md shadow-ucRed/20">
+                    <span>View Honors Experiences</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-3">
+                    <div class="text-ucRed font-extrabold text-3xl">01</div>
+                    <h4 class="text-xl font-semibold text-white">4.0 GPA</h4>
+                    <p class="text-gray-300 text-base">Maintain academic excellence and achieve a 4.0 cumulative GPA throughout coursework.</p>
+                </div>
+
+                <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-3">
+                    <div class="text-ucRed font-extrabold text-3xl">02</div>
+                    <h4 class="text-xl font-semibold text-white">PhD in Aerospace</h4>
+                    <p class="text-gray-300 text-base">Pursue advanced graduate studies and earn a PhD in Aerospace Engineering.</p>
+                </div>
+
+                <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-3">
+                    <div class="text-ucRed font-extrabold text-3xl">03</div>
+                    <h4 class="text-xl font-semibold text-white">Major Research Projects</h4>
+                    <p class="text-gray-300 text-base">Actively participate in and contribute to major aerospace research initiatives.</p>
+                </div>
+
+                <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-3">
+                    <div class="text-ucRed font-extrabold text-3xl">04</div>
+                    <h4 class="text-xl font-semibold text-white">Patents & Designs</h4>
+                    <p class="text-gray-300 text-base">Patent my own fuel-efficient flight designs and innovative propulsion mechanisms.</p>
+                </div>
+
+                <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-3 sm:col-span-2 lg:col-span-1">
+                    <div class="text-ucRed font-extrabold text-3xl">05</div>
+                    <h4 class="text-xl font-semibold text-white">Engineering Breakthrough</h4>
+                    <p class="text-gray-300 text-base">Discover a monumental breakthrough in the field of Aerospace Engineering.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-cardBg/90 backdrop-blur-md border-t border-cardBorder mt-20 py-10 text-center text-gray-400 text-base relative z-10">
+        <div class="w-[96%] max-w-[1700px] mx-auto px-4 space-y-2">
+            <p>© 2026 Srikar Kumar Kapila • University of Cincinnati University Honors Program (UHP)</p>
+            <p class="text-xs text-gray-500">College of Engineering and Applied Science • Aerospace Engineering</p>
+        </div>
+    </footer>
+
+</body>
+</html>

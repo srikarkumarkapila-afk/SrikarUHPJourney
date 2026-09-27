@@ -26,7 +26,6 @@
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Multi-background transition setup */
         body {
             background-color: #000;
             overflow-x: hidden;
@@ -46,25 +45,10 @@
             transition: opacity 0.5s ease-out;
         }
 
-        /* 1. First image: Race car */
-        #bg-img-1 {
-            background-image: url('WhatsApp Image 2026-09-27 at 9.54.10 AM.jpeg');
-            opacity: 1;
-        }
+        #bg-img-1 { background-image: url('WhatsApp Image 2026-09-27 at 9.54.10 AM.jpeg'); opacity: 1; }
+        #bg-img-2 { background-image: url('WhatsApp Image 2026-09-27 at 9.56.02 AM.jpeg'); opacity: 0; }
+        #bg-img-3 { background-image: url('WhatsApp Image 2026-09-27 at 9.54.22 AM (1).jpeg'); opacity: 0; }
 
-        /* 2. Second image: Trophies */
-        #bg-img-2 {
-            background-image: url('WhatsApp Image 2026-09-27 at 9.56.02 AM.jpeg');
-            opacity: 0;
-        }
-
-        /* 3. Third image: Airplane wing */
-        #bg-img-3 {
-            background-image: url('WhatsApp Image 2026-09-27 at 9.54.22 AM (1).jpeg');
-            opacity: 0;
-        }
-
-        /* Dynamic dark overlay that shifts opacity based on scroll */
         #scroll-overlay {
             position: fixed;
             top: 0;
@@ -72,14 +56,13 @@
             width: 100%;
             height: 100%;
             background-color: #000000;
-            opacity: 0.85; /* Starts very dark (85% black) */
+            opacity: 0.85;
             transition: opacity 0.1s ease-out;
             pointer-events: none;
             z-index: 1;
         }
     </style>
     <script>
-        // Scroll listener to handle 3-stage background image crossfade and deep darkening
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY;
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -91,25 +74,21 @@
             const overlay = document.getElementById('scroll-overlay');
 
             if (scrollFraction <= 0.33) {
-                // First third: Image 1 to Image 2 transition
                 const p = scrollFraction * 3;
                 bg1.style.opacity = (1 - p).toFixed(3);
                 bg2.style.opacity = p.toFixed(3);
                 bg3.style.opacity = '0';
             } else if (scrollFraction <= 0.66) {
-                // Second third: Image 2 to Image 3 transition
                 const p = (scrollFraction - 0.33) * 3;
                 bg1.style.opacity = '0';
                 bg2.style.opacity = (1 - p).toFixed(3);
                 bg3.style.opacity = p.toFixed(3);
             } else {
-                // Final third: Fully Image 3
                 bg1.style.opacity = '0';
                 bg2.style.opacity = '0';
                 bg3.style.opacity = '1';
             }
 
-            // Scroll opacity curve: starts at 0.85 and deepens towards the bottom
             const dynamicOpacity = 0.85 + (scrollFraction * 0.10);
             overlay.style.opacity = dynamicOpacity.toFixed(3);
         });
@@ -117,12 +96,9 @@
 </head>
 <body class="text-gray-100 font-sans antialiased min-h-screen flex flex-col selection:bg-ucRed selection:text-white relative">
 
-    <!-- Background Layers -->
     <div id="bg-img-1" class="bg-layer"></div>
     <div id="bg-img-2" class="bg-layer"></div>
     <div id="bg-img-3" class="bg-layer"></div>
-
-    <!-- Scroll Darkening Overlay -->
     <div id="scroll-overlay"></div>
 
     <!-- Top Navigation Bar -->
@@ -136,7 +112,7 @@
                 </a>
                 <div>
                     <span class="block font-bold text-lg tracking-tight text-white">Srikar Kumar Kapila</span>
-                    <span class="block text-xs text-ucRed font-medium tracking-wider uppercase">University Honors Program</span>
+                    <span class="block text-xs text-ucRed font-medium tracking-wider uppercase">University of Cincinnati | University Honors Program</span>
                 </div>
             </div>
             
@@ -155,7 +131,7 @@
         </div>
     </header>
 
-    <!-- Main Content Container Spread Across Page Width -->
+    <!-- Main Content Container -->
     <main class="flex-grow w-[96%] max-w-[1700px] mx-auto px-4 sm:px-8 lg:px-12 py-12 space-y-16 relative z-10">
 
         <!-- Header Section -->
@@ -178,7 +154,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Bearcats Electric Racing -->
                 <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-4">
                     <div class="flex items-center justify-between">
                         <span class="text-xs px-3 py-1 rounded-xl bg-ucRed/20 text-ucRed font-semibold border border-ucRed/30">Student Team</span>
@@ -190,7 +165,6 @@
                     </p>
                 </div>
 
-                <!-- Bearcat Motorsports -->
                 <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-4">
                     <div class="flex items-center justify-between">
                         <span class="text-xs px-3 py-1 rounded-xl bg-ucRed/20 text-ucRed font-semibold border border-ucRed/30">Student Team</span>
@@ -214,7 +188,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Chess Experiences -->
                 <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-4">
                     <div class="w-12 h-12 rounded-xl bg-ucRed/20 text-ucRed flex items-center justify-center font-bold text-xl">
                         <i class="fa-solid fa-chess"></i>
@@ -225,7 +198,6 @@
                     </p>
                 </div>
 
-                <!-- Pottery -->
                 <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-4">
                     <div class="w-12 h-12 rounded-xl bg-ucRed/20 text-ucRed flex items-center justify-center font-bold text-xl">
                         <i class="fa-solid fa-mug-hot"></i>
@@ -236,7 +208,6 @@
                     </p>
                 </div>
 
-                <!-- Video Games -->
                 <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-4">
                     <div class="w-12 h-12 rounded-xl bg-ucRed/20 text-ucRed flex items-center justify-center font-bold text-xl">
                         <i class="fa-solid fa-gamepad"></i>
@@ -247,7 +218,6 @@
                     </p>
                 </div>
 
-                <!-- Programming -->
                 <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-4">
                     <div class="w-12 h-12 rounded-xl bg-ucRed/20 text-ucRed flex items-center justify-center font-bold text-xl">
                         <i class="fa-solid fa-code"></i>
@@ -258,7 +228,6 @@
                     </p>
                 </div>
 
-                <!-- Aerodynamics Research -->
                 <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-4">
                     <div class="w-12 h-12 rounded-xl bg-ucRed/20 text-ucRed flex items-center justify-center font-bold text-xl">
                         <i class="fa-solid fa-wind"></i>
@@ -269,7 +238,6 @@
                     </p>
                 </div>
 
-                <!-- Finance Research -->
                 <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-4">
                     <div class="w-12 h-12 rounded-xl bg-ucRed/20 text-ucRed flex items-center justify-center font-bold text-xl">
                         <i class="fa-solid fa-chart-line"></i>
@@ -292,7 +260,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- University Honors Program Community -->
                 <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-4">
                     <div class="flex items-center justify-between">
                         <span class="text-xs px-3 py-1 rounded-xl bg-ucRed/20 text-ucRed font-semibold border border-ucRed/30">UHP & CEAS</span>
@@ -304,7 +271,6 @@
                     </p>
                 </div>
 
-                <!-- RAMP Research Aspirations -->
                 <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-4">
                     <div class="flex items-center justify-between">
                         <span class="text-xs px-3 py-1 rounded-xl bg-ucRed/20 text-ucRed font-semibold border border-ucRed/30">Aerospace Engineering</span>
@@ -312,13 +278,9 @@
                     </div>
                     <h4 class="text-2xl font-bold text-white">RAMP Research Aspirations</h4>
                     <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
-                        Preparing to apply for the Research Assistantship Mentorship Program (RAMP) to collaborate directly with faculty on aerospace propulsion and design.
+                        Preparing to apply for the Research and Mentorship Program (RAMP) to collaborate directly with faculty on aerospace propulsion and design.
                     </p>
                 </div>
-            </div>
-
-            <div class="bg-darkBg/60 p-6 rounded-xl border border-cardBorder text-gray-300 text-base sm:text-lg leading-relaxed">
-                As I progress through my academic career in the College of Engineering and Applied Science, I plan to expand my involvement by securing co-op placements, leading student design projects focused on fuel-efficient flight mechanisms, and mentoring younger students interested in STEM.
             </div>
         </section>
 

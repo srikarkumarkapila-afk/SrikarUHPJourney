@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Involvement & Interests - Srikar Kumar Kapila</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        ucRed: '#C6011F',
+                        ucDarkRed: '#9b0117',
+                        ucBlack: '#000000',
+                        darkBg: '#0A0A0C',
+                        cardBg: '#141418',
+                        cardBorder: '#262630'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Multi-background transition setup */
+        body {
+            background-color: #000;
+            overflow-x: hidden;
+        }
+
+        .bg-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            z-index: 0;
+            transition: opacity 0.5s ease-out;
+        }
+
+        /* 1. First image: Race car */
+        #bg-img-1 {
+            background-image: url('WhatsApp Image 2026-09-27 at 9.54.10 AM.jpeg');
+            opacity: 1;
+        }
+
+        /* 2. Second image: Trophies */
+        #bg-img-2 {
+            background-image: url('WhatsApp Image 2026-09-27 at 9.56.02 AM.jpeg');
+            opacity: 0;
+        }
+
+        /* 3. Third image: Airplane wing */
+        #bg-img-3 {
+            background-image: url('WhatsApp Image 2026-09-27 at 9.54.22 AM (1).jpeg');
+            opacity: 0;
+        }
+
+        /* Dynamic dark overlay that shifts opacity based on scroll */
+        #scroll-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            opacity: 0.85; /* Starts very dark (85% black) */
+            transition: opacity 0.1s ease-out;
+            pointer-events: none;
+            z-index: 1;
+        }
+    </style>
+    <script>
+        // Scroll listener to handle 3-stage background image crossfade and deep darkening
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollFraction = Math.min(1, Math.max(0, scrollTop / (docHeight || 1)));
+
+            const bg1 = document.getElementById('bg-img-1');
+            const bg2 = document.getElementById('bg-img-2');
+            const bg3 = document.getElementById('bg-img-3');
+            const overlay = document.getElementById('scroll-overlay');
+
+            if (scrollFraction <= 0.33) {
+                // First third: Image 1 to Image 2 transition
+                const p = scrollFraction * 3;
+                bg1.style.opacity = (1 - p).toFixed(3);
+                bg2.style.opacity = p.toFixed(3);
+                bg3.style.opacity = '0';
+            } else if (scrollFraction <= 0.66) {
+                // Second third: Image 2 to Image 3 transition
+                const p = (scrollFraction - 0.33) * 3;
+                bg1.style.opacity = '0';
+                bg2.style.opacity = (1 - p).toFixed(3);
+                bg3.style.opacity = p.toFixed(3);
+            } else {
+                // Final third: Fully Image 3
+                bg1.style.opacity = '0';
+                bg2.style.opacity = '0';
+                bg3.style.opacity = '1';
+            }
+
+            // Scroll opacity curve: starts at 0.85 and deepens towards the bottom
+            const dynamicOpacity = 0.85 + (scrollFraction * 0.10);
+            overlay.style.opacity = dynamicOpacity.toFixed(3);
+        });
+    </script>
+</head>
+<body class="text-gray-100 font-sans antialiased min-h-screen flex flex-col selection:bg-ucRed selection:text-white relative">
+
+    <!-- Background Layers -->
+    <div id="bg-img-1" class="bg-layer"></div>
+    <div id="bg-img-2" class="bg-layer"></div>
+    <div id="bg-img-3" class="bg-layer"></div>
+
+    <!-- Scroll Darkening Overlay -->
+    <div id="scroll-overlay"></div>
+
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-darkBg/90 backdrop-blur-md border-b border-cardBorder">
+        <div class="max-w-[96%] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="flex items-center group" title="Return to About Me">
+                    <div class="w-12 h-12 rounded-xl overflow-hidden bg-cardBorder border border-ucRed/40 flex items-center justify-center shadow-lg shadow-ucRed/20 group-hover:border-ucRed transition-all">
+                        <img src="SK.jpg" alt="SK Logo" class="w-full h-full object-cover">
+                    </div>
+                </a>
+                <div>
+                    <span class="block font-bold text-lg tracking-tight text-white">Srikar Kumar Kapila</span>
+                    <span class="block text-xs text-ucRed font-medium tracking-wider uppercase">University Honors Program</span>
+                </div>
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                <a href="index.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">About Me</a>
+                <a href="involvement.html" class="px-4 py-2 rounded-xl text-sm font-medium bg-ucRed text-white transition-all shadow-sm">Involvement & Interests</a>
+                <a href="yearinreview.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Year-In-Review</a>
+                <a href="honors.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Honors Experiences</a>
+            </nav>
+
+            <div class="md:hidden">
+                <button type="button" class="text-gray-400 hover:text-white p-2">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container Spread Across Page Width -->
+    <main class="flex-grow w-[96%] max-w-[1700px] mx-auto px-4 sm:px-8 lg:px-12 py-12 space-y-16 relative z-10">
+
+        <!-- Header Section -->
+        <section class="text-center space-y-4 py-8 border-b border-cardBorder">
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white">
+                Involvement & Interests
+            </h1>
+            <p class="max-w-4xl mx-auto text-gray-300 text-lg sm:text-xl">
+                Exploring student organizations, engineering projects, hobbies, and future goals at the University of Cincinnati.
+            </p>
+        </section>
+
+        <!-- Current Campus Involvement Section -->
+        <section class="bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl p-8 sm:p-12 shadow-xl space-y-8">
+            <div class="flex items-center space-x-3 border-b border-cardBorder pb-4">
+                <div class="w-10 h-10 rounded-xl bg-ucRed/20 text-ucRed flex items-center justify-center font-bold text-lg">
+                    <i class="fa-solid fa-flag-checkered"></i>
+                </div>
+                <h3 class="text-3xl font-bold text-white">Current Campus Involvement</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Bearcats Electric Racing -->
+                <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs px-3 py-1 rounded-xl bg-ucRed/20 text-ucRed font-semibold border border-ucRed/30">Student Team</span>
+                        <span class="text-xs text-gray-400 font-mono">2026 – Present</span>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white">Bearcats Electric Racing</h4>
+                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+                        Participating in their <strong>Aerodynamics Team</strong>, researching and developing on the car's nose cone and diffuser. Also serving on their <strong>Business Team</strong>, working on developing and optimizing their official website.
+                    </p>
+                </div>
+
+                <!-- Bearcat Motorsports -->
+                <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs px-3 py-1 rounded-xl bg-ucRed/20 text-ucRed font-semibold border border-ucRed/30">Student Team</span>
+                        <span class="text-xs text-gray-400 font-mono">2026 – Present</span>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white">Bearcat Motorsports</h4>
+                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+                        Member of the <strong>Vehicle Dynamics Team</strong>, focusing on calculating and optimizing the Aerodynamics Efficiency of the vehicle.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hobbies & Pursuits Section -->
+        <section class="bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl p-8 sm:p-12 shadow-xl space-y-8">
+            <div class="flex items-center space-x-3 border-b border-cardBorder pb-4">
+                <div class="w-10 h-10 rounded-xl bg-ucRed/20 text-ucRed flex items-center justify-center font-bold text-lg">
+                    <i class="fa-solid fa-compass"></i>
+                </div>
+                <h3 class="text-3xl font-bold text-white">Hobbies & Pursuits</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Chess Experiences -->
+                <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-ucRed/20 text-ucRed flex items-center justify-center font-bold text-xl">
+                        <i class="fa-solid fa-chess"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-white">Chess Experiences</h4>
+                    <p class="text-gray-300 text-base leading-relaxed">
+                        Passionate competitive chess player; recently tied for first place in the U1600 section at the 2026 US Chess Federation's K12 High School Nationals in Chicago.
+                    </p>
+                </div>
+
+                <!-- Pottery -->
+                <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-ucRed/20 text-ucRed flex items-center justify-center font-bold text-xl">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-white">Pottery</h4>
+                    <p class="text-gray-300 text-base leading-relaxed">
+                        Enjoy working with ceramics and the creative, hands-on process of shaping functional and artistic pieces.
+                    </p>
+                </div>
+
+                <!-- Video Games -->
+                <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-ucRed/20 text-ucRed flex items-center justify-center font-bold text-xl">
+                        <i class="fa-solid fa-gamepad"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-white">Video Games</h4>
+                    <p class="text-gray-300 text-base leading-relaxed">
+                        Engage in strategic and immersive gaming as a way to unwind, solve complex system mechanics, and maintain quick problem-solving reflexes.
+                    </p>
+                </div>
+
+                <!-- Programming -->
+                <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-ucRed/20 text-ucRed flex items-center justify-center font-bold text-xl">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-white">Programming</h4>
+                    <p class="text-gray-300 text-base leading-relaxed">
+                        Building software tools, web platforms, and automated solutions to streamline technical workflows and bring creative concepts to life.
+                    </p>
+                </div>
+
+                <!-- Aerodynamics Research -->
+                <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-ucRed/20 text-ucRed flex items-center justify-center font-bold text-xl">
+                        <i class="fa-solid fa-wind"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-white">Aerodynamics Research</h4>
+                    <p class="text-gray-300 text-base leading-relaxed">
+                        Exploring advanced flow mechanics, boundary layer analysis, and high-efficiency flight/vehicle designs.
+                    </p>
+                </div>
+
+                <!-- Finance Research -->
+                <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-ucRed/20 text-ucRed flex items-center justify-center font-bold text-xl">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-white">Finance Research</h4>
+                    <p class="text-gray-300 text-base leading-relaxed">
+                        Studying economic trends, market models, and quantitative investment strategies to build robust financial literacy.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Future Goals for Involvement Section -->
+        <section class="bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl p-8 sm:p-12 shadow-xl space-y-8">
+            <div class="flex items-center space-x-3 border-b border-cardBorder pb-4">
+                <div class="w-10 h-10 rounded-xl bg-ucRed/20 text-ucRed flex items-center justify-center font-bold text-lg">
+                    <i class="fa-solid fa-bullseye"></i>
+                </div>
+                <h3 class="text-3xl font-bold text-white">Future Goals for Involvement</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- University Honors Program Community -->
+                <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs px-3 py-1 rounded-xl bg-ucRed/20 text-ucRed font-semibold border border-ucRed/30">UHP & CEAS</span>
+                        <span class="text-xs text-gray-400 font-mono">Future Milestone</span>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white">University Honors Program Community</h4>
+                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+                        Engaging in honors seminars, networking with high-achieving STEM peers, and pursuing specialized cross-disciplinary learning paths.
+                    </p>
+                </div>
+
+                <!-- RAMP Research Aspirations -->
+                <div class="bg-darkBg/60 p-8 rounded-xl border border-cardBorder space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs px-3 py-1 rounded-xl bg-ucRed/20 text-ucRed font-semibold border border-ucRed/30">Aerospace Engineering</span>
+                        <span class="text-xs text-gray-400 font-mono">Future Milestone</span>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white">RAMP Research Aspirations</h4>
+                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+                        Preparing to apply for the Research Assistantship Mentorship Program (RAMP) to collaborate directly with faculty on aerospace propulsion and design.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-darkBg/60 p-6 rounded-xl border border-cardBorder text-gray-300 text-base sm:text-lg leading-relaxed">
+                As I progress through my academic career in the College of Engineering and Applied Science, I plan to expand my involvement by securing co-op placements, leading student design projects focused on fuel-efficient flight mechanisms, and mentoring younger students interested in STEM.
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-cardBg/90 backdrop-blur-md border-t border-cardBorder mt-20 py-10 text-center text-gray-400 text-base relative z-10">
+        <div class="w-[96%] max-w-[1700px] mx-auto px-4 space-y-2">
+            <p>© 2026 Srikar Kumar Kapila • University of Cincinnati University Honors Program (UHP)</p>
+            <p class="text-xs text-gray-500">College of Engineering and Applied Science • Aerospace Engineering</p>
+        </div>
+    </footer>
+
+</body>
+</html>

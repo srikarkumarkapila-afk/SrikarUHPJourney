@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year-In-Review - Srikar Kumar Kapila</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        ucRed: '#C6011F',
+                        ucDarkRed: '#9b0117',
+                        ucBlack: '#000000',
+                        darkBg: '#0A0A0C',
+                        cardBg: '#141418',
+                        cardBorder: '#262630'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #000;
+            overflow-x: hidden;
+        }
+
+        /* Fixed background image setup using Maka.jpeg */
+        #bg-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('Maka.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Deep dark overlay set to 95% opacity */
+        #scroll-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            opacity: 0.95;
+            transition: opacity 0.1s ease-out;
+            pointer-events: none;
+            z-index: 1;
+        }
+    </style>
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollFraction = Math.min(1, Math.max(0, scrollTop / (docHeight || 1)));
+
+            const overlay = document.getElementById('scroll-overlay');
+            const dynamicOpacity = 0.95 + (scrollFraction * 0.04);
+            overlay.style.opacity = dynamicOpacity.toFixed(3);
+        });
+    </script>
+</head>
+<body class="text-gray-100 font-sans antialiased min-h-screen flex flex-col selection:bg-ucRed selection:text-white relative">
+
+    <!-- Background Layer & Overlay -->
+    <div id="bg-layer"></div>
+    <div id="scroll-overlay"></div>
+
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-darkBg/90 backdrop-blur-md border-b border-cardBorder">
+        <div class="max-w-[96%] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="flex items-center group" title="Return to About Me">
+                    <div class="w-12 h-12 rounded-xl overflow-hidden bg-cardBorder border border-ucRed/40 flex items-center justify-center shadow-lg shadow-ucRed/20 group-hover:border-ucRed transition-all">
+                        <img src="SK.jpg" alt="SK Logo" class="w-full h-full object-cover">
+                    </div>
+                </a>
+                <div>
+                    <span class="block font-bold text-lg tracking-tight text-white">Srikar Kumar Kapila</span>
+                    <span class="block text-xs text-ucRed font-medium tracking-wider uppercase">University Honors Program</span>
+                </div>
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                <a href="index.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">About Me</a>
+                <a href="involvement.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Involvement & Interests</a>
+                <a href="yearinreview.html" class="px-4 py-2 rounded-xl text-sm font-medium bg-ucRed text-white transition-all shadow-sm">Year-In-Review</a>
+                <a href="honors.html" class="px-4 py-2 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-ucRed/25 transition-all">Honors Experiences</a>
+            </nav>
+
+            <div class="md:hidden">
+                <button type="button" class="text-gray-400 hover:text-white p-2">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container Spread Across Page Width -->
+    <main class="flex-grow w-[96%] max-w-[1700px] mx-auto px-4 sm:px-8 lg:px-12 py-12 space-y-16 relative z-10">
+
+        <!-- Header Section -->
+        <section class="text-center space-y-4 py-8 border-b border-cardBorder">
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white">
+                Year-In-Review
+            </h1>
+        </section>
+
+        <!-- Annual Reflection Card -->
+        <section class="space-y-6">
+            <div class="bg-cardBg/90 backdrop-blur-md border border-cardBorder rounded-2xl p-6 sm:p-8 shadow-xl flex items-center justify-between flex-wrap gap-4">
+                <div class="flex items-center space-x-4">
+                    <div class="text-ucRed text-xl">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white">Annual Reflection</h3>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <span class="text-xs px-3 py-1.5 rounded-lg bg-[#3a0b12] text-white font-mono border border-ucRed/40">2026-2027</span>
+                    <span class="text-xs px-3 py-1.5 rounded-lg bg-emerald-950/80 text-emerald-400 font-medium border border-emerald-800/50 flex items-center space-x-1.5">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>Ongoing</span>
+                    </span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-cardBg/90 backdrop-blur-md border-t border-cardBorder mt-20 py-10 text-center text-gray-400 text-base relative z-10">
+        <div class="w-[96%] max-w-[1700px] mx-auto px-4 space-y-2">
+            <p>© 2026 Srikar Kumar Kapila • University of Cincinnati University Honors Program (UHP)</p>
+            <p class="text-xs text-gray-500">College of Engineering and Applied Science • Aerospace Engineering</p>
+        </div>
+    </footer>
+
+</body>
+</html>
